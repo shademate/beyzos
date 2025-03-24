@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyzoşum için❤️</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pacifico', cursive;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white; /* Metin rengi beyaz yapıldı */
+            text-align: center;
+            overflow: hidden;
+            background: url('https://shopsonix.com/cdn/shop/files/Watchface_HK_9_Large_ea2254e8-d8fb-469e-877f-8283beac18e7.jpg?v=1683056466') no-repeat center top;
+            background-size: cover;
+            animation: backgroundMove 20s linear infinite;
+            background-attachment: fixed; /* Arka planın sabit kalmasını sağlıyor */
+        }
+
+        /* Arka plan sadece aşağıya kayacak */
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 100%; /* Yalnızca aşağıya kayma */
+            }
+        }
+
+        /* Menü çubuğu */
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #ff69b4;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            box-sizing: border-box;
+        }
+
+        .menu img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .menu .menu-links {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .menu .menu-links a {
+            margin: 0 20px;
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .menu .menu-links a:hover {
+            color: #ff1493;
+        }
+
+        .menu .countdown {
+            font-size: 2.5em;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        /* Metin */
+        .welcome-message {
+            font-size: 1.5em;
+            color: white; /* Metin rengi beyaz yapıldı */
+            line-height: 1.6;
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            margin-top: 120px;
+        }
+
+        /* Aşkımıza şahit misiniz? sorusu ve butonlar */
+        .question-container {
+            font-size: 1.5em;
+            color: white; /* Metin rengi beyaz yapıldı */
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            width: 50%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background: #ff69b4;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background: #ff1493;
+        }
+
+        #noBtn {
+            background: #ccc;
+            color: black;
+            position: absolute;
+            transition: 0.5s;
+        }
+
+        /* Hayır butonunun yer değiştirmesi */
+        #noBtn:hover {
+            left: calc(100% - 200px);
+            top: calc(100% - 50px);
+        }
+
+        #message {
+            font-size: 2em;
+            color: white; /* Metin rengi beyaz yapıldı */
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menü Çubuğu -->
+    <div class="menu">
+        <img src="https://logos-world.net/wp-content/uploads/2023/04/Hello-Kitty-Logo.png" alt="Hello Kitty">
+        <div class="menu-links">
+            <a href="beyza.html">Beyza Kimdir?</a> 
+            <a href="hikaye.html">Bizim Hikayemiz</a>
+            <a href="talha.html">Talha Kimdir?</a> 
+        </div>
+        <div class="countdown" id="countdown">Aşkımızın Yıl Dönümü</div>
+    </div>
+
+    <!-- Yeni mesaj -->
+    <div class="welcome-message">
+        <h2>HOŞGELDİNİZ!</h2>
+        <p>Bu site Beyza Ve Talha'nın Aşkını duyurmak amacıyla hazırlanmıştır.</p>
+        <p>Biz aşkımızı anlatırken siz keyfinize bakın!</p>
+    </div>
+
+    <!-- Aşkımıza şahit misiniz? sorusu -->
+    <div class="question-container">
+        <p>Aşkımıza şahit misiniz?</p>
+        <div class="buttons">
+            <button id="yesBtn">Evet✓</button>
+            <button id="noBtn">Hayır❌</button>
+        </div>
+    </div>
+
+    <h2 id="message" style="display: none;">Bütün dünya şahit olacak 🌍</h2>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const message = document.getElementById("message");
+
+        // Hayır butonuna tıklanınca yer değiştirme fonksiyonu
+        noBtn.addEventListener("mouseover", function() {
+            const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+            
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        // Evet butonuna tıklanınca mesaj göster
+        yesBtn.addEventListener("click", function() {
+            message.style.display = "block";
+        });
+
+        // Geri sayım sayacı fonksiyonu
+        function updateCountdown() {
+            const countdownDate = new Date("May 8, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Aşkımızın Yıl Dönümü geldi! 🎉";
+                clearInterval(countdownInterval);
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("countdown").innerHTML = days + "g " + hours + "s " + minutes + "d " + seconds + "s ";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Mouse üzerine geldiğinde yazıyı değiştirme
+        const countdownElement = document.getElementById('countdown');
+        countdownElement.addEventListener('mouseover', function() {
+            countdownElement.innerHTML = "Aşkımızın Yıl Dönümü 💖";
+        });
+
+        countdownElement.addEventListener('mouseout', function() {
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
